@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<albums>
+  <album>
+    <name>The Best of DMX</name>
+    <artist>DMX</artist>
+    <year>2010</year>
+    <producer>Swizz Beatz</producer>
+    <price>20$</price>
+    <songs>
+      <song>
+        <title>Party Up</title>
+        <duration>4:15</duration>
+      </song>
+      <song>
+        <title>The Rain</title>
+        <duration>3:55</duration>
+      </song>
+      <song>
+        <title>Grand Finale</title>
+        <duration>4:35</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>Get Rich or Die Tryin'</name>
+    <artist>50 Cent</artist>
+    <year>2003</year>
+    <producer>Dr. Dre, Eminem</producer>
+    <price>30$</price>
+    <songs>
+      <song>
+        <title>P.I.M.P</title>
+        <duration>5:10</duration>
+      </song>
+      <song>
+        <title>Many Man</title>
+        <duration>4:45</duration>
+      </song>
+      <song>
+        <title>In Da Club</title>
+        <duration>3:50</duration>
+      </song>
+    </songs>
+  </album>
+  <album>
+    <name>Undisputed</name>
+    <artist>DMX</artist>
+    <year>2012</year>
+    <producer>Swizz Beatz</producer>
+    <price>15$</price>
+    <songs>
+      <song>
+        <title>I'm Back</title>
+        <duration>4:15</duration>
+      </song>
+      <song>
+        <title>Head Up</title>
+        <duration>3:55</duration>
+      </song>
+      <song>
+        <title>Sucka for Love</title>
+        <duration>4:35</duration>
+      </song>
+    </songs>
+  </album>
+</albums>
