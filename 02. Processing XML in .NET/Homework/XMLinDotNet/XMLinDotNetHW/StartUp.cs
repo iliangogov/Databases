@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace XMLinDotNetHW
             DeleteAlbumAbovePrice(40);
             ExtractSongsUsingXmlReader();
             ExtractSongsUsingXDocumentAndLINQ();
+            CreateXMLfileFromTxtFile();
+            ExtractFromCatalogToAlbums();
         }
 
         static void ExtractArtistUsingDomParser()
@@ -45,7 +48,7 @@ namespace XMLinDotNetHW
                 Console.WriteLine("Artist: {0}, has {1} {2}", pair.Key, pair.Value, pair.Value == 1 ? "album" : "albums");
             }
 
-            Console.WriteLine();
+            Console.WriteLine("------------------------------");
         }
 
         static void ExtractArtistUsingXPath()
@@ -75,7 +78,7 @@ namespace XMLinDotNetHW
                 Console.WriteLine("Artist: {0}, has {1} {2}", pair.Key, pair.Value, pair.Value == 1 ? "album" : "albums");
             }
 
-            Console.WriteLine();
+            Console.WriteLine("------------------------------");
         }
 
         static void DeleteAlbumAbovePrice(decimal price)
@@ -114,7 +117,7 @@ namespace XMLinDotNetHW
                 Console.WriteLine("Artist: {0}, has {1} {2}", pair.Key, pair.Value, pair.Value == 1 ? "album" : "albums");
             }
 
-            Console.WriteLine();
+            Console.WriteLine("------------------------------");
         }
 
         static void ExtractSongsUsingXmlReader()
@@ -132,6 +135,8 @@ namespace XMLinDotNetHW
                     }
                 }
             }
+
+            Console.WriteLine("------------------------------");
         }
 
         static void ExtractSongsUsingXDocumentAndLINQ()
@@ -156,12 +161,110 @@ namespace XMLinDotNetHW
             Console.WriteLine("Found {0} albums:", albums.Count());
             foreach (var album in albums)
             {
-                Console.WriteLine(" -Album name: {0} (by {1})\nSongs:", album.Name, album.Artist);
+                Console.WriteLine("Album name: {0} (by {1})\nSongs:", album.Name, album.Artist);
                 foreach (var song in album.songs)
                 {
                     Console.WriteLine(" ----- {0} ({1})", song.Title, song.Duration);
                 }
             }
+
+            Console.WriteLine("------------------------------");
+        }
+
+        static void CreateXMLfileFromTxtFile()
+        {
+            string targetUrl = "../../Person.txt";
+            string targetText = File.ReadAllText(targetUrl, Encoding.UTF8);
+            string[] personInfo = targetText.Split(',');
+            string personName = personInfo[0];
+            string personAddress = personInfo[1];
+            string personPhone = personInfo[2];
+
+            string fileName = "../../Person.xml";
+            Encoding encoding = Encoding.GetEncoding("windows-1251");
+            using (XmlTextWriter writer = new XmlTextWriter(fileName, encoding))
+            {
+                writer.Formatting = Formatting.Indented;
+                writer.IndentChar = '\t';
+                writer.Indentation = 1;
+
+                writer.WriteStartDocument();
+                writer.WriteStartElement("persons");
+                writer.WriteStartElement("person");
+                writer.WriteElementString("name", personName);
+                writer.WriteElementString("address", personAddress);
+                writer.WriteElementString("phone", personPhone);
+                writer.WriteEndDocument();
+
+                //you need to chek up solution folder for the new file!
+            }
+
+            Console.WriteLine("Document {0} created.", fileName);
+            Console.WriteLine("------------------------------");
+        }
+
+        static void ExtractFromCatalogToAlbums()
+        {
+            Dictionary<string, string> AlbumsArtists = new Dictionary<string, string>();
+
+            using (XmlReader reader = XmlReader.Create("../../Catalogue.xml"))
+            {
+                while (reader.Read())
+                {
+                    if ((reader.NodeType == XmlNodeType.Element) &&
+                        (reader.Name == "album"))
+                    {
+                        string album = "";
+                        string artist = "";
+
+                        while (reader.Read())
+                        {
+                            if (reader.Name == "name")
+                            {
+                                album = reader.ReadElementString();
+                            }
+
+                            if ((reader.NodeType == XmlNodeType.Element) &&
+                                (reader.Name == "artist"))
+                            {
+                                artist = reader.ReadElementString();
+                                AlbumsArtists.Add(album, artist);
+                            }
+                        }
+                    }
+                }
+            }
+
+            string fileName = "../../Album.xml";
+            Encoding encoding = Encoding.GetEncoding("windows-1251");
+
+            using (XmlTextWriter writer = new XmlTextWriter(fileName, encoding))
+            {
+                writer.Formatting = Formatting.Indented;
+                writer.IndentChar = '\t';
+                writer.Indentation = 1;
+
+                writer.WriteStartDocument();
+                writer.WriteStartElement("albums");
+                foreach (KeyValuePair<string, string> pair in AlbumsArtists)
+                {
+                    writer.WriteStartElement("album");
+                    writer.WriteElementString("name", pair.Key);
+                    writer.WriteElementString("author", pair.Value);
+                    writer.WriteEndElement();
+                    Console.WriteLine("Album: {0}, Author: {1}", pair.Key, pair.Value);
+                }
+
+                writer.WriteEndDocument();
+            }
+
+            Console.WriteLine("------------------------------");
+        }
+
+        static void ExtractFromDirectoryFilesTreeToXML(string targetDirectory)
+        {
+            
         }
     }
 }
+
