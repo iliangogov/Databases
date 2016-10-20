@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<academy xmlns:students="urn:students">
-  <students>
+
+<academy>
+  <students xmlns:students="urn:telerikacademy.com:students">
     <student>
       <name>Ivan Ivanov</name>
       <sex>Male</sex>
@@ -46,13 +47,23 @@
       </exams>
     </student>
   </students>
- <enrollment>
+  <enrollment>
     <dates>
-      <date><day>2016-05-08</day></date>
-      <date><day>2016-06-11</day></date>
-      <date><day>2016-07-06</day></date>
-      <date><day>2016-08-12</day></date>
-      <date><day>2017-09-02</day></date>
+      <date>
+        <day>2016-05-08</day>
+      </date>
+      <date>
+        <day>2016-06-11</day>
+      </date>
+      <date>
+        <day>2016-07-06</day>
+      </date>
+      <date>
+        <day>2016-08-12</day>
+      </date>
+      <date>
+        <day>2017-09-02</day>
+      </date>
     </dates>
     <score>60</score>
   </enrollment>

@@ -48,12 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="students.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="students.html" />
     <Content Include="students.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="students.xslt">
+    <Content Include="students.xsl">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
