@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Homework
+namespace HomeworkTask2
 {
+    //Write a program that retrieves the name and description of all categories in the Northwind DB.
+
     public class StartUp
     {
-        //Write a program that retrieves from the Northwind sample database 
-        //    in MS SQL Server the number of rows in the Categories table.
         static void Main()
         {
             const string connectionString = "Server=.;Database=Northwind;Integrated Security=true";
@@ -20,17 +24,17 @@ namespace Homework
                 SqlCommand command = new SqlCommand(getTopTenEmployees, connection);
                 SqlDataReader reader = command.ExecuteReader();
 
-                int count = 0;
                 while (reader.Read())
                 {
-                    count++;
+                    var name = reader["CategoryName"];
+                    var description = reader["Description"];
+
+                    Console.WriteLine("Name of category {0}, description: {1}", name, description);
                 }
 
-                Console.WriteLine("Count of Categories {0}", count);
+                connection.Close();
+                Console.WriteLine("Connection closed");
             }
-
-            connection.Close();
-            Console.WriteLine("Connection Closed!");
         }
     }
 }
