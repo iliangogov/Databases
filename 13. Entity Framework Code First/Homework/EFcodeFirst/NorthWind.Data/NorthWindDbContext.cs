@@ -16,6 +16,14 @@ namespace NorthWind.Data
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<NorthWindDbContext, Configuration>());
         }
 
+
+        //Fluent API
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Country>().HasKey(x => x.Id).HasMany(x => x.Cities);
+            base.OnModelCreating(modelBuilder);
+        }
+
         public virtual DbSet<Teacher> Teachers { get; set; }
                 
         public virtual DbSet<Country> Countries { get; set; }
