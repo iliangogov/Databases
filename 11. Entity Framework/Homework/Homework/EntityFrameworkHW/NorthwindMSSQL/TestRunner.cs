@@ -16,7 +16,7 @@ namespace NorthwindMSSQL
                 ContactName= "Iliyan",
                 CompanyName = "Progress"
             };
-            //Console.WriteLine(dbContext);
+            
             // Task 2
             CustomersManipulations.InsertCustomer(newCustomer, dbContext);
 
