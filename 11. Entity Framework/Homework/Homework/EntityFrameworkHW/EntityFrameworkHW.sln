@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindMSSQL", "NorthwindMSSQL\NorthwindMSSQL.csproj", "{8760329A-5B8F-45D1-B072-8C661284A69A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloneDatabaseTask6", "CloneDatabase\CloneDatabaseTask6.csproj", "{DC21F1B7-6D10-4054-8A91-E381B90B2C51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrencySimulationTask7", "ConcurrencySimulation\ConcurrencySimulationTask7.csproj", "{EC026695-EC35-4DDA-B6CE-F83BEE45D6ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8760329A-5B8F-45D1-B072-8C661284A69A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8760329A-5B8F-45D1-B072-8C661284A69A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8760329A-5B8F-45D1-B072-8C661284A69A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC21F1B7-6D10-4054-8A91-E381B90B2C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC21F1B7-6D10-4054-8A91-E381B90B2C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC21F1B7-6D10-4054-8A91-E381B90B2C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC21F1B7-6D10-4054-8A91-E381B90B2C51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC026695-EC35-4DDA-B6CE-F83BEE45D6ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC026695-EC35-4DDA-B6CE-F83BEE45D6ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC026695-EC35-4DDA-B6CE-F83BEE45D6ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC026695-EC35-4DDA-B6CE-F83BEE45D6ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

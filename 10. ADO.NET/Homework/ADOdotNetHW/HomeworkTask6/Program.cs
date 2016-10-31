@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Data.OleDb;
 
 namespace HomeworkTask6
@@ -10,48 +9,31 @@ namespace HomeworkTask6
 
         public static void Main()
         {
-            ReadExcelData();
-        }
+            // Create an Excel file with 2 columns: name and score...
+            // Write a program that reads your MS Excel file through the OLE DB data provider and displays the name and score row by row.
+            var connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\\..\\db.xlsx; Extended Properties = \"Excel 12.0 Xml;HDR=YES\"";
+            OleDbConnection connection = new OleDbConnection(connectionString);
 
-        private static void ReadExcelData()
-        {
-            using (var excelConnection = new OleDbConnection(Properties.Settings.Default.excelConnection))
+            connection.Open();
+
+
+            using (connection)
             {
-                excelConnection.Open();
-                string sheetName = GetSheetName(excelConnection);
-                OleDbCommand excelCommand = GetOleDbCommand(sheetName, excelConnection);
+                OleDbCommand command = new OleDbCommand("SELECT * FROM [Sheet1$]", connection);
+                OleDbDataReader reader = command.ExecuteReader();
+                //for (int i = 1; i < 15; i++)
+                //{
+                //    command.Parameters.AddWithValue("@name", "User N" + i);
+                //}
 
-                using (OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter(excelCommand))
+                while (reader.Read())
                 {
-                    DataSet dataSet = new DataSet();
-                    oleDbDataAdapter.Fill(dataSet);
+                    var name = (string)reader["Name"];
+                    var score = (double)reader["Score"];
 
-                    using (DataTableReader reader = dataSet.CreateDataReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var fullName = reader["Name"];
-                            var score = reader["Score"];
-
-                            Console.WriteLine(fullName + " -> " + score);
-                        }
-                    }
+                    Console.WriteLine($"Name: {name}\nScore: {score}\n\n");
                 }
             }
-        }
-
-        private static string GetSheetName(OleDbConnection oleDbConnection)
-        {
-            DataTable excelSchema = oleDbConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-            string sheetName = excelSchema.Rows[0]["TABLE_NAME"].ToString();
-            return sheetName;
-        }
-
-        private static OleDbCommand GetOleDbCommand(string sheetName, OleDbConnection excelConnection)
-        {
-            OleDbCommand oleDbCommand = new OleDbCommand(@"SELECT *
-                                                           FROM [" + sheetName + "]", excelConnection);
-            return oleDbCommand;
         }
     }
 }

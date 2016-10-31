@@ -1,6 +1,9 @@
 ﻿using NorthwindMSSQL.Data;
 using System;
 
+using Microsoft.SqlServer.Management.Smo;
+using Microsoft.SqlServer.Management.Common;
+
 namespace NorthwindMSSQL
 {
     public class TestRunner
@@ -33,6 +36,10 @@ namespace NorthwindMSSQL
 
             //Task 5       
             CustomersManipulations.ShowOrdersByDatesPeriodAndRegion(new DateTime(1997,05,10), new DateTime(1998,02,10), "RJ", dbContext);
+
+            //Task 6 see project CloneDatabase
+
+            
         }
     }
 }
