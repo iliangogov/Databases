@@ -1,0 +1,5 @@
+Relationships:
+Employees-Reports = one to many
+Employees=Departments = one to many
+Employees-Projects= many to many
+Employees(Managers)-Employees= one to many
