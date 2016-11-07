@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SocialNetwork.Models
 {
-    public class User
+    public class UserProfile
     {
         private ICollection<Message> messages;
         private ICollection<Image> images;
         private ICollection<Post> posts;
         private DateTime registeredOn;
 
-        public User()
+        public UserProfile()
         {
             this.messages = new HashSet<Message>();
             this.images = new HashSet<Image>();
@@ -27,16 +24,19 @@ namespace SocialNetwork.Models
         [Index(IsUnique = true)]
         [MinLength(4)]
         [MaxLength(20)]
+
         // [Range(4, 20, ErrorMessage = "Invalid User Username length")]
         public string Username { get; set; }
 
         [MinLength(2)]
         [MaxLength(50)]
+
         // [Range(2, 50, ErrorMessage = "Invalid User FirstName length")]
         public string FirstName { get; set; }
 
         [MinLength(2)]
         [MaxLength(50)]
+
         // [Range(2, 50,ErrorMessage ="Invalid User LastName length")]
         public string LastName { get; set; }
 

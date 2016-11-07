@@ -15,7 +15,7 @@ namespace SocialNetwork.Data
         {
         }
 
-        public IDbSet<User> Users { get; set; }
+        public IDbSet<UserProfile> Users { get; set; }
 
         public IDbSet<Post> Posts { get; set; }
 

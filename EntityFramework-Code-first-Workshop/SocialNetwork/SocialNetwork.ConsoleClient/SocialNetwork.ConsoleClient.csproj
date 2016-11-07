@@ -67,6 +67,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generators\RandomGenerator.cs" />
+    <Compile Include="Generators\XmlFileGenerator.cs" />
+    <Compile Include="Importer.cs" />
+    <Compile Include="Models\FriendshipXmlModel.cs" />
+    <Compile Include="Models\ImageXmlModel.cs" />
+    <Compile Include="Models\MessageXmlModel.cs" />
+    <Compile Include="Models\PostXmlModel.cs" />
+    <Compile Include="Models\UserXmlModel.cs" />
     <Compile Include="Searcher\ISocialNetworkService.cs" />
     <Compile Include="Searcher\Searcher.cs" />
     <Compile Include="Searcher\SocialNetworkService.cs" />
@@ -101,7 +109,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

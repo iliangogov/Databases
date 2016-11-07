@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SocialNetwork.Models
 {
@@ -20,16 +17,16 @@ namespace SocialNetwork.Models
 
         public int FirstUserId { get; set; }
 
-        public User FirstUser { get; set; }
+        public UserProfile FirstUser { get; set; }
 
         public int SecondUserId { get; set; }
 
-        public User SecondUser { get; set; }
+        public UserProfile SecondUser { get; set; }
 
         [Index]
         public bool Approved { get; set; }
 
-        public DateTime FriendshipSince { get; set; }
+        public DateTime? FriendsSince { get; set; }
 
         public virtual ICollection<Message> Messages { get; set; }
     }
